@@ -5,6 +5,4 @@ const app = express();
 
 app.listen(port, () => console.log(`Server listening on ${port}`));
 
-app.get("/api/tasks", (req, res) => {
-  res.send("Get All Tasks");
-});
+app.use("/api/tasks", require("./routes/taskRoutes"));
