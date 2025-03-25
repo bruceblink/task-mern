@@ -2,6 +2,10 @@ const express = require("express");
 const { errorHandler } = require("./middleware/errorMiddleware");
 const dotenv = require("dotenv").config();
 const port = process.env.PORT || 5000;
+const connectDB = require("./connect/database");
+
+// 数据库连接
+connectDB();
 const app = express();
 // 添加json支持
 app.use(express.json());
