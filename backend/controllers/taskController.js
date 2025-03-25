@@ -1,7 +1,9 @@
 const asyncHandler = require("express-async-handler");
+const Task = require("../models/taskModel");
 
 const getTasks = asyncHandler(async (_, res) => {
-  res.status(200).json({ message: "Get All Tasks" });
+  const task = await Task.find();
+  res.status(200).json(task);
 });
 
 const setTask = asyncHandler(async (req, res) => {
