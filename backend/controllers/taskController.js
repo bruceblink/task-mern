@@ -11,15 +11,30 @@ const setTask = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("Please enter a task");
   }
-  res.status(200).json({ mesage: "Create Task" });
+  const task = await Task.create({ text: req.body.text });
+  res.status(200).json(task);
 });
 
 const putTask = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: `Task ${req.params.id} update.` });
+  const task = await Task.findById(req.params.id);
+  if (!task) {
+    res.status(400);
+    throw new Error("Task not found");
+  }
+  const updatedTask = await Task.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+  });
+  res.status(200).json(updatedTask);
 });
 
 const deleteTask = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: `Task ${req.params.id} delete.` });
+  const task = await Task.findById(req.params.id);
+  if (!task) {
+    res.status(400);
+    throw new Error("Task not found");
+  }
+  await Task.findByIdAndDelete(req.params.id);
+  res.status(200).json({ id: req.params.id });
 });
 
 module.exports = { getTasks, setTask, putTask, deleteTask };
