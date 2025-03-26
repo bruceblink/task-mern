@@ -14,5 +14,7 @@ app.use(express.urlencoded({ extended: false }));
 app.listen(port, () => console.log(`Server listening on ${port}`));
 
 app.use("/api/tasks", require("./routes/taskRoutes"));
+//添加 用户路由API
+app.use("/api/users", require("./routes/userRoutes"));
 // 添加错误处理的中间件
 app.use(errorHandler);
