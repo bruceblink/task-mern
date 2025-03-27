@@ -52,8 +52,10 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 });
 
+// 从数据库返回用户信息
 const getCurrentUser = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: "Current user data" });
+  const { _id, name, email } = await User.findById(req.user.id);
+  res.status(200).json({ id: _id, name, email });
 });
 
 const generateJWTtoken = (id) =>
