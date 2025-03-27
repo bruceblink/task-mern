@@ -4,13 +4,13 @@ const { protect } = require("../middleware/authMiddleware");
 const {
   getTasks,
   setTask,
-  putTask,
+  updateTask,
   deleteTask,
 } = require("../controllers/taskController");
 
 router.get("/", protect, getTasks);
 router.post("/", protect, setTask);
-router.put("/:id", protect, putTask);
+router.put("/:id", protect, updateTask);
 router.delete("/:id", protect, deleteTask);
 
 module.exports = router;
