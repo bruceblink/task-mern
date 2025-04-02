@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { createTask } from "../features/task/taskSlice"; //待实现
 
 const TaskForm = () => {
   const [text, setText] = useState("");
+  const dispatch = useDispatch();
   const onSubmit = (e) => {
     e.preventDefault();
+    dispatch(createTask({ text }));
     setText("");
   };
   return (
