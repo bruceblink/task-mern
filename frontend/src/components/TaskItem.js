@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
-
+import { deleteTask } from "../features/task/taskSlice";
 const TaskItem = ({ task }) => {
+  const dispatch = useDispatch();
   return (
     <div className='task'>
       <div>
@@ -13,6 +14,9 @@ const TaskItem = ({ task }) => {
         })}
       </div>
       <h2>{task.text}</h2>
+      <button onClick={() => dispatch(deleteTask(task._id))} className='close'>
+        X
+      </button>
     </div>
   );
 };
