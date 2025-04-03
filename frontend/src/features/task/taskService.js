@@ -11,7 +11,17 @@ const createTask = async (taskData, token) => {
   return response.data;
 };
 
-const getTasks = async (token) => {};
+const getTasks = async (token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.get(API_URL, config);
+  return response.data;
+  // The function uses axios to send a GET request to the API_URL with the token in the headers.
+  // It returns the response data from the API.
+};
 
 const updateTask = async (taskId, taskData, token) => {};
 
