@@ -5,6 +5,7 @@ import Register from "./components/Register";
 import Header from "./components/Header";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import TaskList from "./components/TaskList";
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
             <Route path='/' element={<Dashboard />}></Route>
             <Route path='/login' element={<Login />}></Route>
             <Route path='/register' element={<Register />}></Route>
+            <Route path='/alltasks' element={<TaskList />}></Route>
+            {/**添加404页面 */}
+            <Route path='*' element={<h1>404 Not Found</h1>}></Route>
           </Routes>
         </div>
       </Router>
